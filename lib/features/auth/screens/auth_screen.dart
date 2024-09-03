@@ -25,10 +25,19 @@ class _AuthScreenState extends State<AuthScreen> {
   final AuthService authService = AuthService();
 
   void signupUser() {
-    print("SIGN UP USER CALLED");
+    //print("SIGN UP USER CALLED");
     authService.signUpUser(
         context: context,
         name: _nameController.text,
+        email: _emailController.text,
+        password: _passwordController.text);
+  }
+
+  void signinUser() {
+    //print("SIGN UP USER CALLED");
+    authService.signinUser(
+        context: context,
+        //name: _nameController.text,
         email: _emailController.text,
         password: _passwordController.text);
   }
@@ -100,12 +109,12 @@ class _AuthScreenState extends State<AuthScreen> {
                               height: 10,
                             ),
                             CustomeButton(text: "Sign-up", ontap: () {
-                                print("Sign-up button pressed");
+                                //print("Sign-up button pressed");
                                 if (_signupkey.currentState!.validate()) {
-                                  print("Form validated");
+                                  //print("Form validated");
                                   signupUser();
                                 } else {
-                                  print("Form validation failed");
+                                 // print("Form validation failed");
                                 }
                               },)
                            
@@ -155,6 +164,12 @@ class _AuthScreenState extends State<AuthScreen> {
                               height: 10,
                             ),
                             CustomeButton(text: "Sign-in", ontap: () {
+                                if (_signinkey.currentState!.validate()) {
+                                  //print("Form validated");
+                                  signinUser();
+                                } else {
+                                 // print("Form validation failed");
+                                }
                               
                             })
                           ],

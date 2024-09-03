@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   final String name;
   final String email;
@@ -30,8 +32,8 @@ class User {
     };
   }
 
-  // Create a User object from a JSON map
-  factory User.fromJson(Map<String, dynamic> json) {
+  //Create a User object from a JSON map
+  factory User.fromMap(Map<String, dynamic> json) {
     return User(
       name: json['name'] ?? '',
       email: json['email'] ?? '',
@@ -42,6 +44,8 @@ class User {
       address: json['address'] ?? '',
     );
   }
+
+  factory User.fromJson(String source) => User.fromMap(jsonDecode(source));
 
 
 }
